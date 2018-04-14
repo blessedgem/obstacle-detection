@@ -1,0 +1,37 @@
+<%= form_with(model: sensor_reading, local: true) do |form| %>
+  <% if sensor_reading.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sensor_reading.errors.count, "error") %> prohibited this sensor_reading from being saved:</h2>
+
+      <ul>
+      <% sensor_reading.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :motion %>
+    <%= form.check_box :motion, id: :sensor_reading_motion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :infrared %>
+    <%= form.check_box :infrared, id: :sensor_reading_infrared %>
+  </div>
+
+  <div class="field">
+    <%= form.label :light %>
+    <%= form.number_field :light, id: :sensor_reading_light %>
+  </div>
+
+  <div class="field">
+    <%= form.label :temperature %>
+    <%= form.number_field :temperature, id: :sensor_reading_temperature %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

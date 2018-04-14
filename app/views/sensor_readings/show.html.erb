@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Motion:</strong>
+  <%= @sensor_reading.motion %>
+</p>
+
+<p>
+  <strong>Infrared:</strong>
+  <%= @sensor_reading.infrared %>
+</p>
+
+<p>
+  <strong>Light:</strong>
+  <%= @sensor_reading.light %>
+</p>
+
+<p>
+  <strong>Temperature:</strong>
+  <%= @sensor_reading.temperature %>
+</p>
+
+<%= link_to 'Edit', edit_sensor_reading_path(@sensor_reading) %> |
+<%= link_to 'Back', sensor_readings_path %>
