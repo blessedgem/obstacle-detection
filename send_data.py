@@ -2,23 +2,31 @@ import serial
 import psycopg2
 import time
 import random
+import datetime
 
-arduino = serial.Serial("/dev/ttyACM1")
+arduino = serial.Serial("/dev/USB0")
 arduino.baudrate =9600
 
-conn=psycopg2.connect(database="dakkt3c1iuntiv",user="oiedoiklmgjnit",password="0a584243f50a5c9f4fba6ef430afc1ae1681b643cf19fa833d1fbbea772dec4a",host="ec2-54-83-54-224.compute-1.amazonaws.com",port="5432")
+conn=psycopg2.connect(database="ddb4c81qsqs7ed",user="hzakfboavogoth",password="2c56ed5a2bd18e4f48fae6c16b610fc487fb40120158c7ba4c5b9aeacb9d49a2",host="ec2-54-163-240-54.compute-1.amazonaws.com",port="5432")
 cur=conn.cursor()
 
 for a in arduino
     id = random.randint(0,100000)
-    timestamps = NOW()
+    timestamps = datetime.datetime.NOW()
     # distance = arduino.readline()
-    distance = 77
-    created_at = NOW()
-    updated_at = NOW()
+    #distance = 77
+    val=ser.readline()
+    vals=val.split(',')
+    print vals[0]
+    print vals[1]
+    print vals[2]
+    print vals[3]
 
-    query = "INSERT INTO detected_obstacles (id, timestamps, distance, created_at, updated_at) VALUES (%s, %s, %s, %s, %s);"
-    data = (id, timestamps, distance, created_at, updated_at)
+    created_at = timestamps
+    updated_at = timestamps
+
+    query = "INSERT INTO sensor_readings (id, motion, infrared, light, temperature, created_at, updated_at) VALUES (%s,%s, %s, %s, %s, %s);"
+    data = (id, vals[0], vals[1], vals[2],vals[3], created_at, updated_at)
     cur.execute(query, data)
-    conn.commit
+    conn.commit()
 conn.close
