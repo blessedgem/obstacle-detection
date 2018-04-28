@@ -26,7 +26,7 @@
         <% else %>
         <td><span class="badge badge-default">AC is OFF</span></td>
         <% end %>
-        <% if sensor_reading.temperature <= 500 && (sensor_reading.motion == true || sensor_reading.infrared == true) %>
+        <% if sensor_reading.light <= 500 && (sensor_reading.motion == true || sensor_reading.infrared == true) %>
         <td><span class="badge badge-default">Light is ON</span></td>
         <% else %>
         <td><span class="badge badge-default">Light is OFF</span></td>
