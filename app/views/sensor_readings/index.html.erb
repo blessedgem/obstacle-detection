@@ -9,6 +9,8 @@
       <th>Infrared</th>
       <th>Light</th>
       <th>Temperature</th>
+      <th>Air Con</th>
+      <th>Lights</th>
     </tr>
   </thead>
 
@@ -19,6 +21,16 @@
         <td><%= sensor_reading.infrared %></td>
         <td><%= sensor_reading.light %></td>
         <td><%= sensor_reading.temperature %></td>
+        <% if sensor_reading.temperature >= 24 && (sensor_reading.motion == true || sensor_reading.infrared == true) %>
+        <td><span class="badge badge-default">AC is ON</span></td>
+        <% else %>
+        <td><span class="badge badge-default">AC is OFF</span></td>
+        <% end %>
+        <% if sensor_reading.temperature >= 24 && (sensor_reading.motion == true || sensor_reading.infrared == true) %>
+        <td><span class="badge badge-default">Light is ON</span></td>
+        <% else %>
+        <td><span class="badge badge-default">Light is OFF</span></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
